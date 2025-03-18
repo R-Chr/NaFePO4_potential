@@ -1,0 +1,112 @@
+backend:
+  batch_size: 100
+  display_step: 100
+  evaluator: tensorpot
+  gpu_config:
+    gpu_ind: -1
+    mem_limit: 0
+cutoff: 6.5
+data:
+  filename: train_data.pckl.gzip
+  reference_energy:
+    Fe: -0.208448785369
+    Na: -0.0749040330661
+    O: -0.0911142437163
+    P: -0.0973190129812
+  test_filename: test_data.pckl.gzip
+fit:
+  early_stopping_patience: 50
+  ladder_step: 5
+  ladder_type: power_order
+  loss:
+    L1_coeffs: 1.0e-08
+    L2_coeffs: 1.0e-08
+    kappa: 0.05
+  maxiter: 2000
+  min_relative_test_loss_per_iter: 1.0e-05
+  min_relative_train_loss_per_iter: 5.0e-05
+  optimizer: BFGS
+  repulsion: auto
+potential:
+  bonds:
+    ALL:
+      NameOfCutoffFunction: cos
+      dcut: 0.01
+      radbase: SBessel
+      radparameters:
+      - 5.25
+      rcut: 6.5
+  deltaSplineBins: 0.001
+  elements:
+  - P
+  - O
+  - Na
+  - Fe
+  embeddings:
+    ALL:
+      fs_parameters:
+      - 1
+      - 1
+      - 1
+      - 0.5
+      - 1
+      - 0.75
+      - 1
+      - 0.25
+      - 1
+      - 0.125
+      - 1
+      - 0.375
+      - 1
+      - 0.875
+      - 1
+      - 2
+      ndensity: 8
+      npot: FinnisSinclairShiftedScaled
+  functions:
+    BINARY:
+      lmax_by_orders:
+      - 0
+      - 4
+      - 2
+      - 0
+      nradmax_by_orders:
+      - 15
+      - 3
+      - 2
+      - 1
+    QUATERNARY:
+      lmax_by_orders:
+      - 0
+      - 4
+      - 2
+      - 0
+      nradmax_by_orders:
+      - 15
+      - 3
+      - 2
+      - 1
+    TERNARY:
+      lmax_by_orders:
+      - 0
+      - 4
+      - 2
+      - 0
+      nradmax_by_orders:
+      - 15
+      - 3
+      - 2
+      - 1
+    UNARY:
+      lmax_by_orders:
+      - 0
+      - 4
+      - 2
+      - 0
+      nradmax_by_orders:
+      - 15
+      - 3
+      - 2
+      - 1
+    number_of_functions_per_element: 250
+seed: 42
