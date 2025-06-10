@@ -26,9 +26,19 @@ Potential files for the ACE potential and training data and input files
 
 - `output_potential.yaml` and `output_potential.yace` contain the parameters for the ACE potential, formated for the use with `ASE` and `LAMMPS` respectively. See [PACEMAKER documentation](https://pacemaker.readthedocs.io/en/latest/) for more information. 
 - `input.yaml` is the input yaml file used for the PACEMAKER framework for potential optimization.
-- `train_data.pckl.gzip` and `test_data.pckl.gzip` is the training data generated after all iterations of active learning. The files contain all atomic structes as `ase.Atoms` objects, along with their corresponding energy and forces. Files can be read with `pandas` as  `df = pandas.read_pickle(train_data.pckl.gzip, compression="gzip")`.
+- `train_data.pckl.gzip` and `test_data.pckl.gzip` is the training data generated after all iterations of active learning. 
+  - Contains atomic structures as `ase.Atoms` objects with corresponding energies and forces
+  - Load using: `df = pandas.read_pickle('train_data.pckl.gzip', compression='gzip')`
 
 #### `active_learning`
 
- - `balace.yaml` input file for running active learning workflow from the [vitrum package](https://vitrum.readthedocs.io/en/latest/). The active learning workflow employed here was run using this [Github commit](https://github.com/R-Chr/vitrum/commit/60774c191430c3f3f3a5b014876f027bc5194d77), and is not guarenteed to work with the newest vitrum version without changes to the input file.
+ - `balace.yaml` input file for running active learning workflow from the [vitrum package](https://vitrum.readthedocs.io/en/latest/). The active learning workflow employed here was run using this [Github commit](https://github.com/R-Chr/vitrum/commit/60774c191430c3f3f3a5b014876f027bc5194d77), and is not guaranteed to work with the newest vitrum version without changes to the input file.
  - `run.py` script for executing workflow
+
+
+## Citation
+If you use this data or code in your research, please cite our paper:
+- Christensen R, Persson KA, Smedskjær MM. Structural origin of disorder-induced ion conduction in NaFePO4 cathode materials. ChemRxiv. 2025; doi:10.26434/chemrxiv-2025-9sf4n  This content is a preprint and has not been peer-reviewed.
+
+## Funding
+This work was supported by the Danish Data Science Academy, which in turn is funded by the Novo Nordisk Foundation (NNF21SA0069429) and VILLUM FONDEN (40516).
