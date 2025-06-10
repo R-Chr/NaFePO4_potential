@@ -1,0 +1,45 @@
+mp_api_key: <MP-API-KEY-HERE>
+units: ["P2O5", "Na2O", "Fe2O2"]
+lammps_exe: <LAMMPS-EXECUTABLE-PATH-HERE>
+launchpad: <FIREWORKS-LAUNCHPAD-PATH-HERE>
+
+# Optional parameters
+
+#database: # Include if you want to start from an initial database
+#  train: "train_data.pckl.gzip" 
+#  test: "test_data.pckl.gzip"  
+
+reference_energy: # Include calculated reference energies for each type of atom in the system. If not included it will default to pacemaker automatic reference energies
+  Na: -0.0749040330661
+  Fe: -0.208448785369
+  P: -0.0973190129812
+  O: -0.0911142437163
+
+high_temp_params:
+  temperature: 5000
+  steps: 100
+  sampling: 5
+
+strain_params:
+  num_strains: 3
+  max_strain: 0.2
+
+lammps_params:
+  max_temp: 5000
+  min_temp: 0.01 
+  cooling_rate: 10
+  sample_rate: 100000
+  seed: 1
+  c_min: 2.5
+  c_max: 30
+
+pace_params:
+  num_select_structures: 500
+  pace_select: True
+  force_glass_structures: True
+  use_spaced_timesteps: False
+
+#incar_settings:    # Include if you want to change incar settings, be careful this is untested and many parameters need to be included
+#  PREC: 0.5
+
+#qadapter_file: "YOUR_QADAPTER_PATH_HERE" # Include if you want to automate queueing of jobs for the .run() method, This is currently has some issues and is not advised.
